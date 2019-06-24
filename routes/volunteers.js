@@ -15,8 +15,12 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/add', function (req, res, next) {
+    const id = req.body.id;
+    const name = req.body.name;
+    const email = req.body.email;
+    const phoneNumber = req.body.phoneNumber;
     pool.getConnection((err, connection) => {
-        const sql = `INSERT INTO volunteers (id, name, emailAddress, phoneNumber) VALUES (NULL, '${req.body.name}', '${req.body.email}', '${req.body.phoneNumber}');`;
+        const sql = `INSERT INTO volunteers (id, name, emailAddress, phoneNumber) VALUES (NULL, '${name}', '${email}', '${phoneNumber}');`;
         console.log(sql);
         connection.query(sql, (err, result) => {
             console.log(result)
@@ -25,6 +29,7 @@ router.post('/add', function (req, res, next) {
 
             res.json({
                 success: true,
+                id,
                 message: 'Done!'
             });
         });
