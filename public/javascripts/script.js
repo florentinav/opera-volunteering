@@ -19,10 +19,16 @@ function display(events) {
         <td>${event.needed}</td>
         <td>${event.applied}</td>
         <td>
-                <button type="submit" a href="#" class="apply">Apply</a></button>
-            </td>
+            <button onClick="applyVolunteer(${event.id})" href="#" class="apply">Apply</a></button>
+        </td>
     </tr>`;
     });
     document.querySelector("#event tbody").innerHTML = list.join("");
 }
 
+
+function applyVolunteer(eventId){
+    //console.log('eventId: ', eventId);
+    var input = document.getElementsByName('eventId')[0];
+    input.value = eventId;
+}

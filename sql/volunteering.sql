@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2019 at 08:08 PM
+-- Generation Time: Jul 13, 2019 at 12:05 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -41,7 +41,9 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `name`, `date`, `needed`) VALUES
 (1, 'La Traviata', '2019-06-28 06:00:00', 8),
-(2, 'Don Giovanni', '2019-07-05 00:00:00', 9);
+(2, 'Don Giovanni', '2019-07-05 00:00:00', 9),
+(5, 'My fair lady', '2019-06-30 06:00:00', 5),
+(8, 'Aida', '2019-07-10 18:00:00', 4);
 
 -- --------------------------------------------------------
 
@@ -65,7 +67,8 @@ INSERT INTO `volunteers` (`id`, `name`, `emailAddress`, `phoneNumber`) VALUES
 (2, 'Tina Vasilovschi', 'v.tina@mail.com', '0746889534'),
 (3, 'Dani Turu', 'd.turu@mail.com', '0746889599'),
 (5, 'Tinus', 'tinus@email.test', '0745885084'),
-(6, 'Adi Cozmuta', 'adi@mail.test', '0745449985');
+(6, 'Adi Cozmuta', 'adi@mail.test', '0745449985'),
+(7, 'Dani', 'dani.turus@gmail.com', '0748455612');
 
 -- --------------------------------------------------------
 
@@ -74,6 +77,7 @@ INSERT INTO `volunteers` (`id`, `name`, `emailAddress`, `phoneNumber`) VALUES
 --
 
 CREATE TABLE `volunteers_events` (
+  `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   `volunteer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -82,8 +86,16 @@ CREATE TABLE `volunteers_events` (
 -- Dumping data for table `volunteers_events`
 --
 
-INSERT INTO `volunteers_events` (`event_id`, `volunteer_id`) VALUES
-(1, 2);
+INSERT INTO `volunteers_events` (`id`, `event_id`, `volunteer_id`) VALUES
+(7, 1, 1),
+(1, 1, 2),
+(6, 1, 5),
+(8, 1, 7),
+(4, 5, 3),
+(3, 5, 5),
+(2, 5, 6),
+(9, 5, 7),
+(5, 8, 1);
 
 --
 -- Indexes for dumped tables
@@ -105,6 +117,8 @@ ALTER TABLE `volunteers`
 -- Indexes for table `volunteers_events`
 --
 ALTER TABLE `volunteers_events`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `event_id_2` (`event_id`,`volunteer_id`),
   ADD KEY `event_id` (`event_id`),
   ADD KEY `volunteer_id` (`volunteer_id`);
 
@@ -116,13 +130,19 @@ ALTER TABLE `volunteers_events`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `volunteers`
 --
 ALTER TABLE `volunteers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `volunteers_events`
+--
+ALTER TABLE `volunteers_events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

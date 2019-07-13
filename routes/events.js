@@ -22,26 +22,31 @@ router.get('/', function (req, res, next) {
 
 router.post('/add', function (req, res, next) {
   const id = req.body.id;
-  const name = req.body.name;
   const email = req.body.email;
-  const phoneNumber = req.body.phoneNumber;
-  pool.getConnection((err, connection) => {
-      const selectVolunteerId = `SELECT volunteers.id from volunteers WHERE emailAddress="${email}";`; 
+  const eventId = req.body.eventId;
 
-      connection.query(selectVolunteerId, (err, result) => {
-        console.log('result', result[0].id);
+  console.log('email', email);
+  console.log('eventId', eventId);
+
+  pool.getConnection((err, connection) => {
+    const selectVolunteerId = `SELECT volunteers.id from volunteers WHERE emailAddress="${email}";`;
+
+    connection.query(selectVolunteerId, (err, result) => {
+      if (result[0]) {
         const volunteerId = result[0].id;
-        const insertVolunteerIntoEvent = `INSERT INTO volunteers_events (event_id, volunteer_id) VALUES ('1', ${volunteerId});`
+        console.log('volunteerId', volunteerId);
+        
+        const insertVolunteerIntoEvent = `INSERT INTO volunteers_events (event_id, volunteer_id) VALUES (${eventId}, ${volunteerId});`
         connection.query(insertVolunteerIntoEvent, (err, result) => {
-          res.json({
-            success: true,
-            id,
-            message: 'Done!'
-          });
           connection.release();
+          res.redirect('/');
         })
-      })
-  })      
-})
+      } else {
+          // TODO if results[0] not found -> nu exista email in db
+          res.redirect('/');
+      }
+    })
+  })
+});
 
 module.exports = router;
