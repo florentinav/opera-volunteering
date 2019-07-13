@@ -24,6 +24,8 @@ router.post('/add', function (req, res, next) {
   const id = req.body.id;
   const email = req.body.email;
   const eventId = req.body.eventId;
+  const name = req.body.name;
+  const phoneNumber = req.body.phoneNumber;
 
   console.log('email', email);
   console.log('eventId', eventId);
@@ -35,18 +37,32 @@ router.post('/add', function (req, res, next) {
       if (result[0]) {
         const volunteerId = result[0].id;
         console.log('volunteerId', volunteerId);
-        
+
         const insertVolunteerIntoEvent = `INSERT INTO volunteers_events (event_id, volunteer_id) VALUES (${eventId}, ${volunteerId});`
         connection.query(insertVolunteerIntoEvent, (err, result) => {
           connection.release();
           res.redirect('/');
         })
       } else {
-          // TODO if results[0] not found -> nu exista email in db
-          res.redirect('/');
+        const insertNewVolunteer = `INSERT INTO volunteers (name, emailAddress, phoneNumber) VALUES (${name}, ${email}, ${phoneNumber});`;
+        
+        console.log('insert new sql', insertNewVolunteer)
+
+        connection.query(insertNewVolunteer, (err, result) => {
+        
+            const volunteerId = result.insertId;
+            console.log('volunteerId', volunteerId);
+            const insertVolunteerIntoEvent = `INSERT INTO volunteers_events (event_id, volunteer_id) VALUES (${eventId}, ${volunteerId});`
+            connection.query(insertVolunteerIntoEvent, (err, result) => {
+              connection.release();
+              res.redirect('/');
+            })
+          
+        })
       }
     })
   })
+
 });
 
 module.exports = router;
