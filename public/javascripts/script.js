@@ -13,9 +13,10 @@ fetch('events').then(function (r) {
 //TODO - add list of rows to empty table
 function display(events) {
     var list = events.map(function(event) {
+        const date = event.date.replace('T', ' ').replace(':00.000Z', '');
         return `<tr data-id="${event.id}">
         <td>${event.name}</td>
-        <td>${event.date}</td>
+        <td>${date}</td>
         <td>${event.needed}</td>
         <td>${event.applied}</td>
         <td>

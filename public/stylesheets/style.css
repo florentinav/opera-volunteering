@@ -1,13 +1,19 @@
+
 #event {
   text-align: center;
+  background-color: #DCDCDC;
+
 }
 #content {
   text-align: center;
   background-color: white;
 }
-
 body {
   background-image: url("https://images.operacluj.ro/2019/06/Opera-Cluj-Napoca.jpg");
   background-repeat: no-repeat;
   background-position: center;
+ }
+ table.center {
+  margin-left:auto; 
+  margin-right:auto;
 }
