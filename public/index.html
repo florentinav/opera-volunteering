@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Opera Volunteers</title>
     <link rel="stylesheet" href="stylesheets/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
+    <div class="container">
+      <P id="join">Join our community </P>
+      <p id="vol">Be a VOLUNTEER!</p>
 
-    <P id="join">Join our community </P>
-    <p id="vol">Be a VOLUNTEER!</p>
-
-    <table id="event">
+      <table id="event">
         <thead>
-            <tr>
-                <th>Event</th>
-                <th>Date</th>
-                <th>Volunteers needed</th>
-                <th>Applied</th>
-                <th>Apply</th>
-            </tr>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Volunteers needed</th>
+            <th>Applied</th>
+            <th>Apply</th>
+          </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
         <tfoot></tfoot>
-    </table>
-    <br>
+      </table>
+      <br />
 
-    <form method="POST" action="/events/add">
-        <input type="hidden" name="eventId" placeholder="eventId">
-        <input type="text" class="test" name="name" placeholder="Name">
-        <input type="email" name="email" placeholder="Email Address">
-        <input type="text" name="phoneNumber" placeholder="Phone number">
-        <button type="submit">Send</button>
+      <div class="form">
+        <form
+          method="POST"
+          action="/events/add"
+          class="hidden"
+          id="submitVolunteer"
+        >
+          <input type="hidden" name="eventId" placeholder="eventId" />
+          <input type="text" name="name" class="test" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email Address" />
+          <input type="text" name="phoneNumber" placeholder="Phone number" />
+          <button type="submit">Send</button>
         </form>
+      </div>
+    </div>
 
-        <script src="./javascripts/script.js"></script>
-</body>
-
+    <script src="./javascripts/script.js"></script>
+  </body>
 </html>

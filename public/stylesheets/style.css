@@ -1,8 +1,6 @@
-
 #event {
   text-align: center;
-  background-color: #DCDCDC;
-
+  background-color: #dcdcdc;
 }
 #content {
   text-align: center;
@@ -21,15 +19,19 @@ table {
   margin-top: 8%;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 
-tr:nth-child(even){background-color: #a22a2a; 
+tr:nth-child(even) {
+  background-color: #a22a2a;
 }
-tr:nth-child(odd){background-color:#8e2525;}
+tr:nth-child(odd) {
+  background-color: #8e2525;
+}
 
 th {
   background-color: #651a1a;
@@ -39,18 +41,39 @@ tbody {
   color: white;
   text-align: center;
 }
-tr:hover { 
-  background-color:  #651a1a;
+tr:hover {
+  background-color: #651a1a;
 }
 #join {
   text-align: center;
-  color: #DCDCDC;
+  color: #dcdcdc;
   font-size: 10mm;
 }
 
 #vol {
   text-align: center;
-  color: #DCDCDC;
+  color: #dcdcdc;
   font-size: 5mm;
   font-weight: 600;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: initial;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form {
+  display: block;
+  margin-top: 100px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }

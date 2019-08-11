@@ -29,6 +29,8 @@ function display(events) {
 
 
 function applyVolunteer(eventId){
+    var form = document.getElementById('submitVolunteer')
+    form.setAttribute('class', 'visible')
     //console.log('eventId: ', eventId);
     var input = document.getElementsByName('eventId')[0];
     input.value = eventId;
