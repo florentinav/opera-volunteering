@@ -7,7 +7,7 @@ Click [here](https://florentinav.github.io/opera-volunteering/public/) to open l
 
 
 
-#Running the app
+# Running the app
 * Installation
 `npm install`
 
