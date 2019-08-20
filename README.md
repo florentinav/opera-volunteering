@@ -1,4 +1,4 @@
-This project was created by Florentina Vasilovschi and Lidia Cozmuta. The app was created using nodejs & espress in order to help volunteers apply for opera events.
+This app was created by Florentina Vasilovschi and Lidia Cozmuta, using nodejs & espress, in order to help volunteers apply for opera events.
 
 
 
