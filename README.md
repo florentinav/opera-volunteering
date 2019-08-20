@@ -1,8 +1,13 @@
-This project was created by Florentina Vasilovschi and Lidia Cozmuta.
+This project was created by Florentina Vasilovschi and Lidia Cozmuta. The app was created using nodejs & espress in order to help volunteers apply for opera events.
 
-# Live preview
+
+
+## Live preview
 Click [here](https://florentinav.github.io/opera-volunteering/public/) to open live app
 
+
+
+#Running the app
 * Installation
 `npm install`
 
@@ -11,3 +16,5 @@ Click [here](https://florentinav.github.io/opera-volunteering/public/) to open l
 
 * Live server
 `npm run start`
+
+* open http://localhost:3000/
